@@ -1,0 +1,894 @@
+{
+        ////////////////////////////////////////////////
+        // 安全设置，强制Https，跨域控制等。
+        ////////////////////////////////////////////////
+
+        // Http协议绑定的IP地址。
+        "HttpIPAddress": null,
+
+        // Http协议端口号：
+        "HttpPort": 5002,
+
+        // Https协议绑定的IP地址。
+        "HttpsIPAddress": null,
+
+        // Https协议端口号：
+        "HttpsPort": 5003,
+
+        // 是否Https为必须，默认为：false。
+        "IsHttpsNecessary": false,
+
+        // Https证书地址，默认为：“CertificateFiles/https.pfx”
+        "HttpsCertificateFilePath": "CertificateFiles/https.pfx",
+
+        // Https证书密码。
+        "HttpCertificatePassword": "1PIM6k26",
+
+        // 跨域控制信息：
+        "CrossDomainControlInfo":
+        {
+                // 请求，可信任的来源域名数组。
+                "Access_Control_Allow_Origins":
+                [
+                        "baoxiaruanjian.com"
+                ],
+
+                // 请求，允许的请求方法字符串，会直接返回给客户端的“OPTION”请求，
+                // 以英文逗号分隔的请求方法名，如：POST,GET。
+                "Access_Control_Allow_Methods": "POST,GET,OPTIONS,DELETE",
+
+                // 请求，允许的HTTP头部参数，会直接返回给客户端的“OPTION”请求。
+                "Access_Control_Allow_Headers": "Accept,Accept-Language,Content-Language,Content-Type,X-Custom-Header,Cookie,User-Agent,Authorization",
+
+                // 请求，是否使用凭证进行实际请求。
+                "Access_Control_Allow_Credentials": true
+        },
+
+
+        ////////////////////////////////////////////////
+        // 通用文件相关。
+        ////////////////////////////////////////////////
+
+        // 文件上传大小的最大值，单位为“MB”：
+        "FileUploadSizeInMBMax": 50,
+
+        // 是否启用更新前备份。
+        "IsFileBackupFirstUpdateSecondEnable": true,
+
+        /// 是否文件标签是必须的。
+        "IsFileTagNecessary": true,
+
+        // 文件上传规则。
+        "FilePathRules":
+        [
+                ////////////////////////////////////////////////
+                // 文件路径规则：
+                // 目标标签：用户头像、用户道具
+                // 目标格式：非“GIF”图片
+                ////////////////////////////////////////////////
+                {
+                        ////////////////////////////////////////////////
+                        // @路径匹配属性。
+                        ////////////////////////////////////////////////
+                        "FileExtensionNames":
+                        [
+                                "webp",
+                                "jpg",
+                                "jpeg",
+                                "png",
+                                "bmp"
+                        ],
+                        "FileTags":
+                        [
+                                "用户头像",
+                                "用户道具"
+                        ],
+
+                        ////////////////////////////////////////////////
+                        // @原始文件相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 文件保存对相对路径格式化器。
+                        "FilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+                        // 对应上传文件后的Uri格式字符串。
+                        "FileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+
+                        // 原始图片的最大尺寸：
+                        "ImageSizeMax":
+                        {
+                                "Width": 512,
+                                "Height": 512
+                        },
+
+                        // 原始图片除GIF图外的保存格式。
+                        "ImageSaveFormatExceptGifDefault": "webp",
+
+                        // WEBP图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForWebpDefault": 90,
+
+                        // JPEG图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForJpegDefault": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表图片功能
+                        "IsListImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串，正式服。
+                        "ListImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串，正式服。
+                        "ListImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListImageSize":
+                        {
+                                "Width": 128,
+                                "Height": 128
+                        },
+
+                        // 列表图片的格式。
+                        "ListImageFormat": "webp",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表（正方形）图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表“正方形”图片功能
+                        "IsListSquareImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串。
+                        "ListSquareImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串。
+                        "ListSquareImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListSquareImageSize":
+                        {
+                                "Width": 256,
+                                "Height": 256
+                        },
+
+                        // 列表图片的格式。
+                        "ListSquareImageFormat": "webp",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListSquareImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @内容图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，内容图片（详情页图片）功能。
+                        "IsContentImageEnable": true,
+
+                        // 对应上传文件后，自动产生的内容图片的相对路径格式字符串，正式服。
+                        "ContentImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的内容图片的Uri格式字符串，正式服。
+                        "ContentImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 内容图片的最大尺寸。
+                        "ContentImageSizeMax":
+                        {
+                                "Width": 800,
+                                "Height": 0
+                        },
+
+                        // 内容图片的格式。
+                        "ContentImageFormat": "jpg",
+
+                        // 内容图片的保存质量，取值范围：0-100。
+                        "ContentImageSaveQuality": 90,
+
+                        // 水印信息数组。
+                        "ImageWatermarkInfes": null
+                },
+                ////////////////////////////////////////////////
+                // 文件路径规则：
+                // 目标标签：用户头像、用户道具
+                // 目标格式：“GIF”图片
+                ////////////////////////////////////////////////
+                {
+                        ////////////////////////////////////////////////
+                        // @路径匹配属性。  gif图
+                        ////////////////////////////////////////////////
+                        "FileExtensionNames":
+                        [
+                                "gif"
+                        ],
+                        "FileTags":
+                        [
+                                "用户头像",
+                                "用户道具"
+                        ],
+
+                        ////////////////////////////////////////////////
+                        // @原始文件相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 文件保存对相对路径格式化器。
+                        "FilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+                        // 对应上传文件后的Uri格式字符串。
+                        "FileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+
+                        // 原始图片的最大尺寸：
+                        "ImageSizeMax":
+                        {
+                                "Width": 512,
+                                "Height": 512
+                        },
+
+                        // 原始图片除GIF图外的保存格式。
+                        "ImageSaveFormatExceptGifDefault": "webp",
+
+                        // WEBP图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForWebpDefault": 90,
+
+                        // JPEG图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForJpegDefault": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表图片功能
+                        "IsListImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串，正式服。
+                        "ListImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串，正式服。
+                        "ListImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListImageSize":
+                        {
+                                "Width": 128,
+                                "Height": 128
+                        },
+
+                        // 列表图片的格式。
+                        "ListImageFormat": "gif",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表（正方形）图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表“正方形”图片功能
+                        "IsListSquareImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串。
+                        "ListSquareImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串。
+                        "ListSquareImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListSquareImageSize":
+                        {
+                                "Width": 256,
+                                "Height": 256
+                        },
+
+                        // 列表图片的格式。
+                        "ListSquareImageFormat": "gif",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListSquareImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @内容图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，内容图片（详情页图片）功能。
+                        "IsContentImageEnable": true,
+
+                        // 对应上传文件后，自动产生的内容图片的相对路径格式字符串，正式服。
+                        "ContentImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\user_item\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的内容图片的Uri格式字符串，正式服。
+                        "ContentImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/user_item/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 内容图片的最大尺寸。
+                        "ContentImageSizeMax":
+                        {
+                                "Width": 800,
+                                "Height": 0
+                        },
+
+                        // 内容图片的格式。
+                        "ContentImageFormat": "gif",
+
+                        // 内容图片的保存质量，取值范围：0-100。
+                        "ContentImageSaveQuality": 90,
+
+                        // 水印信息数组。
+                        "ImageWatermarkInfes": null
+                },
+                ////////////////////////////////////////////////
+                // 文件路径规则：
+                // 目标标签：用户创作内容（UGC）
+                // 目标格式：所有图片
+                ////////////////////////////////////////////////
+                {
+                        ////////////////////////////////////////////////
+                        // @路径匹配属性。
+                        ////////////////////////////////////////////////
+                        "FileExtensionNames":
+                        [
+                                "webp",
+                                "jpg",
+                                "jpeg",
+                                "png",
+                                "bmp",
+                                "gif"
+                        ],
+                        "FileTags":
+                        [
+                                "用户创作内容"
+                        ],
+
+                        ////////////////////////////////////////////////
+                        // @原始文件相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 文件保存对相对路径格式化器。
+                        "FilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+                        // 对应上传文件后的Uri格式字符串。
+                        "FileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+
+                        // 原始图片的最大尺寸：
+                        "ImageSizeMax":
+                        {
+                                "Width": 4096,
+                                "Height": 4096
+                        },
+
+                        // 原始图片除GIF图外的保存格式。
+                        "ImageSaveFormatExceptGifDefault": "webp",
+
+                        // WEBP图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForWebpDefault": 90,
+
+                        // JPEG图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForJpegDefault": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表图片功能
+                        "IsListImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串，正式服。
+                        "ListImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串，正式服。
+                        "ListImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListImageSize":
+                        {
+                                "Width": 128,
+                                "Height": 128
+                        },
+
+                        // 列表图片的格式。
+                        "ListImageFormat": "webp",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表（正方形）图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表“正方形”图片功能
+                        "IsListSquareImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串。
+                        "ListSquareImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串。
+                        "ListSquareImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListSquareImageSize":
+                        {
+                                "Width": 256,
+                                "Height": 256
+                        },
+
+                        // 列表图片的格式。
+                        "ListSquareImageFormat": "webp",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListSquareImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @内容图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，内容图片（详情页图片）功能。
+                        "IsContentImageEnable": true,
+
+                        // 对应上传文件后，自动产生的内容图片的相对路径格式字符串，正式服。
+                        "ContentImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的内容图片的Uri格式字符串，正式服。
+                        "ContentImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 内容图片的最大尺寸。
+                        "ContentImageSizeMax":
+                        {
+                                "Width": 800,
+                                "Height": 0
+                        },
+
+                        // 内容图片的格式。
+                        "ContentImageFormat": "jpg",
+
+                        // 内容图片的保存质量，取值范围：0-100。
+                        "ContentImageSaveQuality": 90,
+
+                        // 水印信息数组。
+                        "ImageWatermarkInfes": null
+                },
+                ////////////////////////////////////////////////
+                // 文件路径规则：
+                // 目标标签：用户创作内容（UGC）
+                // 目标格式：所有图片
+                ////////////////////////////////////////////////
+                {
+                        ////////////////////////////////////////////////
+                        // @路径匹配属性。
+                        ////////////////////////////////////////////////
+                        "FileExtensionNames":
+                        [
+                                "webp",
+                                "jpg",
+                                "jpeg",
+                                "png",
+                                "bmp",
+                                "gif"
+                        ],
+                        "FileTags":
+                        [
+                                "用户创作内容"
+                        ],
+
+                        ////////////////////////////////////////////////
+                        // @原始文件相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 文件保存对相对路径格式化器。
+                        "FilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+                        // 对应上传文件后的Uri格式字符串。
+                        "FileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
+
+                        // 原始图片的最大尺寸：
+                        "ImageSizeMax":
+                        {
+                                "Width": 4096,
+                                "Height": 4096
+                        },
+
+                        // 原始图片除GIF图外的保存格式。
+                        "ImageSaveFormatExceptGifDefault": "webp",
+
+                        // WEBP图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForWebpDefault": 90,
+
+                        // JPEG图片的默认保存质量，取值范围：0-100。
+                        "ImageSaveQualityForJpegDefault": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表图片功能
+                        "IsListImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串，正式服。
+                        "ListImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串，正式服。
+                        "ListImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListImageSize":
+                        {
+                                "Width": 128,
+                                "Height": 128
+                        },
+
+                        // 列表图片的格式。
+                        "ListImageFormat": "webp",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @列表（正方形）图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，列表“正方形”图片功能
+                        "IsListSquareImageEnable": true,
+
+                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串。
+                        "ListSquareImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串。
+                        "ListSquareImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
+
+                        // 列表图片的尺寸。
+                        "ListSquareImageSize":
+                        {
+                                "Width": 256,
+                                "Height": 256
+                        },
+
+                        // 列表图片的格式。
+                        "ListSquareImageFormat": "webp",
+
+                        // 列表图片的默认保存质量，取值范围：0-100。
+                        "ListSquareImageSaveQuality": 90,
+
+                        ////////////////////////////////////////////////
+                        // @内容图片相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 是否开启，内容图片（详情页图片）功能。
+                        "IsContentImageEnable": true,
+
+                        // 对应上传文件后，自动产生的内容图片的相对路径格式字符串，正式服。
+                        "ContentImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 对应上传文件后，自动产生的内容图片的Uri格式字符串，正式服。
+                        "ContentImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
+
+                        // 内容图片的最大尺寸。
+                        "ContentImageSizeMax":
+                        {
+                                "Width": 800,
+                                "Height": 0
+                        },
+
+                        // 内容图片的格式。
+                        "ContentImageFormat": "jpg",
+
+                        // 内容图片的保存质量，取值范围：0-100。
+                        "ContentImageSaveQuality": 90,
+
+                        // 水印信息数组。
+                        "ImageWatermarkInfes": null
+                },
+
+                ////////////////////////////////////////////////
+                // 默认文件的默认上传配置信息：
+                ////////////////////////////////////////////////
+                {
+                        ////////////////////////////////////////////////
+                        // @路径匹配属性。
+                        ////////////////////////////////////////////////
+                        "FileExtensionNames":
+                        [
+                                "zip",
+                                "rar"
+                        ],
+                        "FileTags":
+                        [
+                        ],
+
+                        ////////////////////////////////////////////////
+                        // @原始文件相关属性。
+                        ////////////////////////////////////////////////
+
+                        // 文件保存对相对路径格式化器，正式服。
+                        "FilePathFormatter": "default\\#FileTags()#\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#UserId(8)#_#FileId(8)#.#FileExtensionName()#"
+                        // 文件保存对相对路径格式化器，开发。
+                        //"FilePathFormatter": "default\\#FileTags()#\\#TimeStamp(yyyyMMdd)#\\#UserId(8)#_#FileId(8)#.#FileExtensionName()#"
+                }
+        ],
+
+        // 滤镜处理过的图片文件信息。
+        "ImageAfterFilterFileInfo":
+        {
+                //滤镜处理过的图片文件路径规则。
+                "FilePathFormatter": "D:\\Work\\BaoXia\\com.baoxiaruanjian\\web\\editor\\tmp_images\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#ImageFilterName()#_#ImageOriginalUriHashCode()#.#FileExtensionName()#",
+
+                //滤镜处理过的图片文件Uri规则。
+                "FileAbsoluteUriFormatter": "//img1b.baoxiaruanjian.com/new/recommend/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#ImageFilterName()#_#ImageOriginalUriHashCode()#.#FileExtensionName()#",
+
+                /// WEBP图片的默认保存质量，取值范围：0-100。
+                "ImageSaveQualityForWebpDefault": 75,
+
+                //JPEG图片的默认保存质量，取值范围：0-100。
+                "ImageSaveQualityForJpegDefault": 75
+        },
+
+        // 会话Token验证间隔秒数，“0“表示只验证一次，永远信任。
+        "AuthorizationTokenVerifyIntervalSeconds": 1800.0,
+
+        // 文件信息持久化间隔秒数。
+        "FileInfoStorageIntervalSeconds": 1.0,
+
+        // 默认的图片水印信息：
+        "ImageWatermarkInfesDefault":
+        [
+                // 宽度 0-200 以下的图片水印信息：
+                {
+                        "MaxImageWidth": 200,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_0-200.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 6.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 0,
+                        "MarginBottom": 0
+                },
+                // 宽度 201-300 的图片水印信息：
+                {
+                        "MaxImageWidth": 300,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_201-300.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 7.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 10,
+                        "MarginBottom": 10
+                },
+                // 宽度 301-500 的图片水印信息：
+                {
+                        "MaxImageWidth": 500,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_301-500.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 11.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 10,
+                        "MarginBottom": 10
+                },
+                // 宽度 501-700 的图片水印信息：
+                {
+                        "MaxImageWidth": 700,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_501-700.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 15.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 10,
+                        "MarginBottom": 10
+                },
+                // 宽度 701-900 的图片水印信息：
+                {
+                        "MaxImageWidth": 900,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_701-900.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 22.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 10,
+                        "MarginBottom": 10
+                },
+                // 宽度 901-1100 的图片水印信息：
+                {
+                        "MaxImageWidth": 1100,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_901-1100.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 25.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 10,
+                        "MarginBottom": 10
+                },
+                // 宽度 1101-1500 的图片水印信息：
+                {
+                        "MaxImageWidth": 1500,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_1101-1500.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 30.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 10,
+                        "MarginBottom": 10
+                },
+                // 宽度 1501-1900 的图片水印信息：
+                {
+                        "MaxImageWidth": 1900,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_1501-1900.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 40.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 20,
+                        "MarginBottom": 20
+                },
+                // 宽度 1901-2300 的图片水印信息：
+                {
+                        "MaxImageWidth": 2300,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_1901-2300.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 46.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 20,
+                        "MarginBottom": 20
+                },
+                // 宽度 2301-2700 的图片水印信息：
+                {
+                        "MaxImageWidth": 2700,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_2301-2700.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 55.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 20,
+                        "MarginBottom": 20
+                },
+                // 宽度 3000- 的图片水印信息：
+                {
+                        "MaxImageWidth": 999999,
+                        "MaxImageHeight": 0,
+
+                        "WatermarkImageFilePath": "Resources/Images/logo_3000-9999.png",
+
+                        "WatermarkLayoutName": "HorizontalLayout",
+                        "WatermarkLayoutAlignTypeName": "Center",
+                        "IsWatermarkDrawImageFirst": true,
+                        "WatermarkImageAndCaptionSeparatorSize": 2,
+                        "WatermarkCaptionFontFileName": "PingFang Regular.ttf",
+                        "WatermarkCaptionFontSize": 60.0,
+                        "WatermarkCaptionColor": "rgba(255, 255, 255, 0.9)",
+                        "WatermarkCaptionBorderSize": 3,
+                        "WatermarkCaptionBorderColor": "rgba(0, 0, 0, 0.1)",
+
+                        "AlignTypeNames": "right bottom",
+
+                        "MarginLeft": 0,
+                        "MarginTop": 0,
+                        "MarginRight": 20,
+                        "MarginBottom": 20
+                }
+        ]
+}
