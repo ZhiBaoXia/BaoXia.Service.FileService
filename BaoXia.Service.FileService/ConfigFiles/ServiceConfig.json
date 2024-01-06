@@ -63,7 +63,7 @@
         [
                 ////////////////////////////////////////////////
                 // 文件路径规则：
-                // 目标标签：用户头像、用户道具
+                // 目标标签：用户头像 & 用户道具
                 // 目标格式：非“GIF”图片
                 ////////////////////////////////////////////////
                 {
@@ -192,7 +192,7 @@
                 },
                 ////////////////////////////////////////////////
                 // 文件路径规则：
-                // 目标标签：用户头像、用户道具
+                // 目标标签：用户头像 & 用户道具
                 // 目标格式：“GIF”图片
                 ////////////////////////////////////////////////
                 {
@@ -317,7 +317,7 @@
                 },
                 ////////////////////////////////////////////////
                 // 文件路径规则：
-                // 目标标签：用户创作内容（UGC）
+                // 目标标签：用户创作内容
                 // 目标格式：所有图片
                 ////////////////////////////////////////////////
                 {
@@ -446,136 +446,8 @@
                 },
                 ////////////////////////////////////////////////
                 // 文件路径规则：
-                // 目标标签：用户创作内容（UGC）
+                // 目标标签：系统管理员 & 运营图片
                 // 目标格式：所有图片
-                ////////////////////////////////////////////////
-                {
-                        ////////////////////////////////////////////////
-                        // @路径匹配属性。
-                        ////////////////////////////////////////////////
-                        "FileExtensionNames":
-                        [
-                                "webp",
-                                "jpg",
-                                "jpeg",
-                                "png",
-                                "bmp",
-                                "gif"
-                        ],
-                        "FileTags":
-                        [
-                                "用户创作内容"
-                        ],
-
-                        ////////////////////////////////////////////////
-                        // @原始文件相关属性。
-                        ////////////////////////////////////////////////
-
-                        // 文件保存对相对路径格式化器。
-                        "FilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
-                        // 对应上传文件后的Uri格式字符串。
-                        "FileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#.#FileExtensionName()#",
-
-                        // 原始图片的最大尺寸：
-                        "ImageSizeMax":
-                        {
-                                "Width": 4096,
-                                "Height": 4096
-                        },
-
-                        // 原始图片除GIF图外的保存格式。
-                        "ImageSaveFormatExceptGifDefault": "webp",
-
-                        // WEBP图片的默认保存质量，取值范围：0-100。
-                        "ImageSaveQualityForWebpDefault": 90,
-
-                        // JPEG图片的默认保存质量，取值范围：0-100。
-                        "ImageSaveQualityForJpegDefault": 90,
-
-                        ////////////////////////////////////////////////
-                        // @列表图片相关属性。
-                        ////////////////////////////////////////////////
-
-                        // 是否开启，列表图片功能
-                        "IsListImageEnable": true,
-
-                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串，正式服。
-                        "ListImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
-
-                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串，正式服。
-                        "ListImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
-
-                        // 列表图片的尺寸。
-                        "ListImageSize":
-                        {
-                                "Width": 128,
-                                "Height": 128
-                        },
-
-                        // 列表图片的格式。
-                        "ListImageFormat": "webp",
-
-                        // 列表图片的默认保存质量，取值范围：0-100。
-                        "ListImageSaveQuality": 90,
-
-                        ////////////////////////////////////////////////
-                        // @列表（正方形）图片相关属性。
-                        ////////////////////////////////////////////////
-
-                        // 是否开启，列表“正方形”图片功能
-                        "IsListSquareImageEnable": true,
-
-                        // 对应上传文件后，自动产生的列表图片的相对路径格式字符串。
-                        "ListSquareImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
-
-                        // 对应上传文件后，自动产生的列表图片的Uri格式字符串。
-                        "ListSquareImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_listsqure.#FileExtensionName()#",
-
-                        // 列表图片的尺寸。
-                        "ListSquareImageSize":
-                        {
-                                "Width": 256,
-                                "Height": 256
-                        },
-
-                        // 列表图片的格式。
-                        "ListSquareImageFormat": "webp",
-
-                        // 列表图片的默认保存质量，取值范围：0-100。
-                        "ListSquareImageSaveQuality": 90,
-
-                        ////////////////////////////////////////////////
-                        // @内容图片相关属性。
-                        ////////////////////////////////////////////////
-
-                        // 是否开启，内容图片（详情页图片）功能。
-                        "IsContentImageEnable": true,
-
-                        // 对应上传文件后，自动产生的内容图片的相对路径格式字符串，正式服。
-                        "ContentImageFilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
-
-                        // 对应上传文件后，自动产生的内容图片的Uri格式字符串，正式服。
-                        "ContentImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#",
-
-                        // 内容图片的最大尺寸。
-                        "ContentImageSizeMax":
-                        {
-                                "Width": 800,
-                                "Height": 0
-                        },
-
-                        // 内容图片的格式。
-                        "ContentImageFormat": "jpg",
-
-                        // 内容图片的保存质量，取值范围：0-100。
-                        "ContentImageSaveQuality": 90,
-
-                        // 水印信息数组。
-                        "ImageWatermarkInfes": null
-                },
-
-                ////////////////////////////////////////////////
-                // 默认文件的默认上传配置信息：
                 ////////////////////////////////////////////////
                 {
                         ////////////////////////////////////////////////
@@ -588,17 +460,18 @@
                         ],
                         "FileTags":
                         [
+                                "系统管理员"
                         ],
 
                         ////////////////////////////////////////////////
                         // @原始文件相关属性。
                         ////////////////////////////////////////////////
 
-                        // 文件保存对相对路径格式化器，正式服。
-                        "FilePathFormatter": "default\\#FileTags()#\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#UserId(8)#_#FileId(8)#.#FileExtensionName()#"
-                        // 文件保存对相对路径格式化器，开发。
-                        //"FilePathFormatter": "default\\#FileTags()#\\#TimeStamp(yyyyMMdd)#\\#UserId(8)#_#FileId(8)#.#FileExtensionName()#"
+                        // 文件保存对相对路径格式化器。
+                        "FilePathFormatter": "D:\\WebRoot\\file.baoxiaruanjian.com\\ugc\\#TimeStamp(yyyy)#\\#TimeStamp(MM)#\\#TimeStamp(dd)#\\#FileId(8)#_#UserId(8)#_list.#FileExtensionName()#",
+                        "ContentImageFileAbsoluteUriFormatter": "//file.baoxiaruanjian.com/ugc/#TimeStamp(yyyy)#/#TimeStamp(MM)#/#TimeStamp(dd)#/#FileId(8)#_#UserId(8)#_detail.#FileExtensionName()#"
                 }
+
         ],
 
         // 滤镜处理过的图片文件信息。
